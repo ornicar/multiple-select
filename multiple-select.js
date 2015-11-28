@@ -74,19 +74,19 @@
         this.selectGroupName = 'data-name="selectGroup' + name + '"';
         this.selectItemName = 'data-name="selectItem' + name + '"';
 
-        if (!this.options.keepOpen) {
-            $(document).click(function (e) {
-                if ($(e.target)[0] === that.$choice[0] ||
-                    $(e.target).parents('.ms-choice')[0] === that.$choice[0]) {
-                    return;
-                }
-                if (($(e.target)[0] === that.$drop[0] ||
-                    $(e.target).parents('.ms-drop')[0] !== that.$drop[0] && e.target !== $el[0]) &&
-                    that.options.isOpen) {
-                    that.close();
-                }
-            });
-        }
+        // if (!this.options.keepOpen) {
+        //     $(document).click(function (e) {
+        //         if ($(e.target)[0] === that.$choice[0] ||
+        //             $(e.target).parents('.ms-choice')[0] === that.$choice[0]) {
+        //             return;
+        //         }
+        //         if (($(e.target)[0] === that.$drop[0] ||
+        //             $(e.target).parents('.ms-drop')[0] !== that.$drop[0] && e.target !== $el[0]) &&
+        //             that.options.isOpen) {
+        //             that.close();
+        //         }
+        //     });
+        // }
     }
 
     MultipleSelect.prototype = {
@@ -222,9 +222,9 @@
                 });
             }
 
-            this.$choice.off('click').on('click', toggleOpen)
-                .off('focus').on('focus', this.options.onFocus)
-                .off('blur').on('blur', this.options.onBlur);
+            this.$choice.parent()
+              .off('mouseover').on('mouseover', that.open.bind(that))
+              .off('mouseout').on('mouseout', that.close.bind(that));
 
             this.$parent.off('keydown').on('keydown', function (e) {
                 switch (e.which) {
