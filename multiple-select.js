@@ -381,14 +381,18 @@
                 $span.prop('title', this.getSelects('text'));
             }
                 
+            var selects = this.getSelects();
+
             // set selects to select
-            this.$el.val(this.getSelects()).trigger('change');
+            this.$el.val(selects).trigger('change');
 
             // add selected class to selected li
             this.$drop.find('li').removeClass('selected');
             this.$drop.find(sprintf('input[%s]:checked', this.selectItemName)).each(function () {
                 $(this).parents('li').first().addClass('selected');
             });
+
+            this.$parent.toggleClass('selected', selects.length > 0);
 
             // trigger <select> change event
             if (!isInit) {
