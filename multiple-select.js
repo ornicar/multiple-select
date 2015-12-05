@@ -565,7 +565,7 @@
                 'enable', 'disable',
                 'checkAll', 'uncheckAll',
                 'focus', 'blur',
-                'refresh', 'close'
+                'refresh', 'close', 'open'
             ];
 
         this.each(function () {
