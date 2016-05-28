@@ -222,9 +222,30 @@
                 });
             }
 
+            function isChild(p, c) {
+                if (!c || p == c) return false;
+                while (c) {
+                    c = c.parentNode;
+                    if (p==c) {
+                       return true;
+                    }
+                }
+                return false;
+            }
             this.$choice.parent()
-              .off('mouseover').on('mouseover', that.open.bind(that))
-              .off('mouseout').on('mouseout', that.close.bind(that));
+                .off('mouseover').on('mouseover', function(e) {
+                    if (!that.options.isOpen) {
+                        that.open();
+                    }
+                })
+              .off('mouseout').on('mouseout', function(e) {
+                  // Only close if the element we are entering is NOT
+                  // a child of the parent element.
+                  var t = e.relatedTarget;
+                  if (that.options.isOpen && !isChild(that.$choice.parent()[0], t)) {
+                      that.close();
+                  }
+              });
 
             this.$parent.off('keydown').on('keydown', function (e) {
                 switch (e.which) {
