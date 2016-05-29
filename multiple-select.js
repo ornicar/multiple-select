@@ -223,8 +223,7 @@
             }
 
             this.$choice.parent()
-              .off('mouseover').on('mouseover', that.open.bind(that))
-              .off('mouseout').on('mouseout', that.close.bind(that));
+                .off('mouseover').off('mouseout').hover(that.open.bind(that), that.close.bind(that));
 
             this.$parent.off('keydown').on('keydown', function (e) {
                 switch (e.which) {
