@@ -315,8 +315,8 @@
                 return;
             }
             this.options.isOpen = true;
-            this.$choice.find('>div').addClass('open');
-            this.$drop[this.animateMethod('show')]();
+            this.$choice.find('div').addClass('open');
+            this.$drop.show();
 
             // fix filter bug: no results show
             this.$selectAll.parent().show();
@@ -347,8 +347,8 @@
 
         close: function () {
             this.options.isOpen = false;
-            this.$choice.find('>div').removeClass('open');
-            this.$drop[this.animateMethod('hide')]();
+            this.$choice.find('div').removeClass('open');
+            this.$drop.hide();
             if (this.options.container) {
                 this.$parent.append(this.$drop);
                 this.$drop.css({
@@ -376,7 +376,7 @@
 
         update: function (isInit) {
             var selects = this.options.displayValues ? this.getSelects() : this.getSelects('text'),
-                $span = this.$choice.find('>span'),
+                $span = this.$choice.find('span'),
                 sl = selects.length;
 
             if (sl === 0) {
