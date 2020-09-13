@@ -15,3 +15,7 @@ https://github.com/wenzhixin/multiple-select/issues/255
 ## LICENSE
 
 [The MIT License](https://github.com/wenzhixin/multiple-select/blob/master/LICENSE)
+
+## COMPILE
+
+~/lila/node_modules/terser/bin/terser multiple-select.js > dist/multiple-select.min.js && cp dist/multiple-select.min.js ~/lila/public/javascripts/vendor
