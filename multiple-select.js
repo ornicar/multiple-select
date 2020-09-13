@@ -17,10 +17,6 @@
     const display = window.getComputedStyle(this).display;
     return display && display != 'none';
   };
-  function isChecked() {
-    const display = window.getComputedStyle(this).display;
-    return display && display != 'none';
-  };
 
   // it only does '%s', and return '' when arguments are undefined
   var sprintf = function(str) {
